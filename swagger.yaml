@@ -1,0 +1,145 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "People Flow Documentation"
+  contact:
+    email: "haytham201223@gmail.com"
+host: "localhost:8080"
+basePath: "/"
+tags:
+- name: "Employee"
+schemes:
+- "http"
+paths:
+  /employee:
+    post:
+      tags:
+      - "Employee"
+      summary: "Add a new Employee"
+      description: ""
+      operationId: "addEmployee"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Employee object"
+        required: true
+        schema:
+          $ref: "#/definitions/Employee"
+      responses:
+        "200":
+          description: "added successfully"
+    get:
+      tags:
+      - "Employee"
+      summary: "get all employees"
+      description: ""
+      operationId: "getAllEmployees"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "result retrieved"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Employee"
+  /employee/{employeeId}:
+    get:
+      tags:
+      - "Employee"
+      summary: "Find Employee by ID"
+      description: "Returns a single Employee"
+      operationId: "getEmployeeById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "employeeId"
+        in: "path"
+        description: "ID of Employee to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Employee"
+  /employee/in-check:
+    put:
+      tags:
+      - "Employee"
+      summary: "Set state to  In Check for an added Employee"
+      operationId: "inCheck"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Update Employee State object"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateEmployeeStateDTO"
+      responses:
+        "200":
+          description: "successful operation"
+  /employee/approve:
+    put:
+      tags:
+      - "Employee"
+      summary: "Set state to  Approve for an In_Checked Employee"
+      operationId: "Approve"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Update Employee State object"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateEmployeeStateDTO"
+      responses:
+        "200":
+          description: "successful operation"
+  /employee/activate:
+    put:
+      tags:
+      - "Employee"
+      summary: "Set state to  Activate for an In_Checked Employee"
+      operationId: "Activate"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Update Employee State object"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateEmployeeStateDTO"
+      responses:
+        "200":
+          description: "successful operation"
+definitions:
+  Employee:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      phoneNumber:
+        type: "string"
+      grossSalary:
+        type: "number"
+      dateOfBirth:
+        type: "string"
+        format: "date-time"
+    xml:
+      name: "Employee"
+ 
+  UpdateEmployeeStateDTO:
+    type: "object"
+    properties:
+      employeeId:
+        type: "integer"
+        format: "int64"
+    xml:
+      name: "User"
+  
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

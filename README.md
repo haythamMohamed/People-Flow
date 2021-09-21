@@ -9,7 +9,7 @@
 
 ## Running the application locally
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.digital.factory.champions.ChampionsApplication` class from your IDE.
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.pplflw.recruitment.RecruitmentApplication` class from your IDE.
 
 - Download the zip or clone the Git repository.
 - Unzip the zip file (if you downloaded one)
@@ -32,7 +32,7 @@ mvn spring-boot:run
 - `dao` — to communicate with the database;
 - `service` — to hold our business logic;
 - `controller` — to listen to the client;
-
+- `dto` - Data transfer object between the client and the backend
 - `resources/` - Contains all the static resources, templates and property files.
 - `resources/static` - contains static resources such as css, js and images.
 - `resources/templates` - contains server-side templates which are rendered by Spring.
